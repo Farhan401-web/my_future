@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fitness Power Gym - Vibrant Style</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    /* Animated gradient background with multiple vivid colors */
+    @keyframes backgroundGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(270deg, #ff003c, #29abe2, #ff9900, #7f00ff, #00ff94);
+      background-size: 1000% 1000%;
+      animation: backgroundGradient 30s ease infinite;
+      color: #eee;
+      min-height: 100vh;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      padding: 40px 15px;
+    }
+    .container {
+      max-width: 1100px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 22px;
+      padding: 50px 55px 55px;
+      box-shadow:
+        0 0 20px 3px rgba(0, 255, 64, 0.6),
+        inset 0 0 30px 2px rgba(255,255,255,0.15);
+      backdrop-filter: blur(9px);
+      overflow-y: auto;
+      color: #f0e9f4;
+    }
+    h1, h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 28px;
+      letter-spacing: 2.4px;
+      user-select: none;
+      /* Neon glowing text with shadows */
+      color: #f8f0ff;
+      text-shadow:
+        0 0 8px #00ffdd,
+        0 0 16px #00a2ff,
+        0 0 32px #00fff2,
+        0 0 48px #66ffb3;
+      /* Neon border glow */
+      -webkit-text-stroke: 0.8px #a30029;
+      padding: 0 10px;
+      border-radius: 12px;
+      background-clip: padding-box;
+      transition: box-shadow 0.3s ease;
+    }
+    h1:hover, h2:hover {
+      text-shadow:
+        0 0 12px #ff0066,
+        0 0 36px #ff0055,
+        0 0 56px #ff0033,
+        0 0 80px #ffccff;
+      cursor: default;
+      box-shadow: 0 0 30px 7px #ff0066;
+    }
+    h2 {
+      font-size: 2.2rem;
+      margin-top: 64px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #ff0066;
+      margin: 10px auto 0;
+      border-radius: 3px;
+      box-shadow: 0 0 15px #ff3399;
+      transition: width 0.28s ease;
+    }
+    h2:hover::after {
+      width: 120px;
+    }
+    p, li {
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+      text-shadow: 0 0 6px rgba(0,0,0,0.85);
+      user-select: text;
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    ul.services-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+      padding-left: 0;
+      margin-top: 16px;
+    }
+    ul.services-list li {
+      background: linear-gradient(135deg, #ff3366, #ff6699);
+      box-shadow:
+        0 6px 18px rgba(255,51,102,0.7);
+      color: white;
+      padding: 22px 28px;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 1.22rem;
+      flex: 1 1 220px;
+      text-align: center;
+      cursor: default;
+      user-select: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    ul.services-list li:hover {
+      transform: scale(1.12) rotate(3deg);
+      box-shadow:
+        0 8px 30px rgba(255,102,153,0.9),
+        0 0 25px 5px #ff66aa;
+    }
+    .timings {
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-align: center;
+      color: #ff99bb;
+      text-shadow:
+        0 0 10px #ff0077;
+    }
+    .contact {
+      font-size: 1.28rem;
+      text-align: center;
+      color: #ff8abf;
+    }
+    .contact a {
+      color: #ffaacc;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      user-select: text;
+      text-shadow: 0 0 11px #ff0066;
+    }
+    .contact a:hover {
+      color: #ffd6e8;
+      text-shadow: 0 0 17px #ff44aa;
+    }
+    .owner {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .owner img {
+      width: 165px;
+      height: 165px;
+      border-radius: 50%;
+      border: 4px solid #ff007f;
+      box-shadow:
+        0 0 23px #ff0077,
+        inset 0 0 13px #ff55aa;
+      object-fit: cover;
+      user-select: none;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .owner img:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow:
+        0 0 30px 9px #ff3399,
+        inset 0 0 26px #ff99cc;
+      cursor: default;
+    }
+    .owner-description {
+      max-width: 670px;
+      font-size: 1.16rem;
+      color: #ffeaea;
+      user-select: text;
+      line-height: 1.5;
+      text-shadow: 0 0 14px rgba(0,0,0,0.37);
+      padding-right: 10px;
+    }
+    .videos {
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+      margin-top: 20px;
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect */
+      height: 0;
+      overflow: hidden;
+      border-radius: 24px;
+      box-shadow:
+        0 0 24px 8px #ff3377;
+      transition: box-shadow 0.4s ease;
+      user-select: none;
+    }
+    .video-wrapper:hover {
+      box-shadow:
+        0 0 38px 12px #ff66aa;
+    }
+    .video-wrapper iframe,
+    .video-wrapper video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 24px;
+    }
+    /* Terms & Conditions with scroll & border glow */
+    .terms {
+      max-height: 240px;
+      overflow-y: auto;
+      background: rgba(255, 0, 99, 0.15);
+      border: 2.5px solid #ff33aa;
+      border-radius: 28px;
+      padding: 26px 32px;
+      box-shadow: inset 0 0 18px 1px rgba(255, 0, 68, 0.5);
+      font-size: 1.1rem;
+      color: #ffdcee;
+      user-select: text;
+      line-height: 1.5;
+    }
+    .terms ul {
+      margin-left: 20px;
+      list-style-type: circle;
+    }
+    /* Scrollbar styling (WebKit) */
+    .terms::-webkit-scrollbar {
+      width: 8px;
+      border-radius: 18px;
+    }
+    .terms::-webkit-scrollbar-track {
+      background: rgba(255, 0, 68, 0.1);
+      border-radius: 18px;
+    }
+    .terms::-webkit-scrollbar-thumb {
+      background: #ff33aa;
+      border-radius: 18px;
+      box-shadow: 0 0 10px #ff77cc;
+    }
+    /* Responsive */
+    @media (max-width: 690px) {
+      .container {
+        padding: 40px 25px 50px;
+      }
+      h2 {
+        font-size: 1.9rem;
+      }
+      .owner-description {
+        font-size: 1.1rem;
+        text-align: center;
+        padding-right: 0;
+      }
+      .owner {
+        flex-direction: column;
+      }
+      ul.services-list {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .contact {
+        font-size: 1.22rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main" aria-label="Fitness Power Gym information website">
+    <h1 tabindex="0">Fitness Power Gym</h1>
+
+    <section id="info" tabindex="0" aria-labelledby="info-heading">
+      <h2 id="info-heading">About Our Gym</h2>
+      <p>Welcome to Fitness Power Gym, your ultimate destination for strength, fitness, and wellness. We provide top-notch equipment, expert trainers, and a motivating environment to help you reach your goals and transform your life.</p>
+    </section>
+
+    <section id="timings" tabindex="0" aria-labelledby="timings-heading">
+      <h2 id="timings-heading">Gym Timings</h2>
+      <p class="timings" aria-live="polite" aria-atomic="true">
+        Monday - Friday: 5:30 AM - 11:00 PM<br />
+        Saturday: 6:00 AM - 9:00 PM<br />
+        Sunday: Closed
+      </p>
+    </section>
+
+    <section id="contact" tabindex="0" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact Details</h2>
+      <p class="contact">
+        Phone: <a href="tel:+1234567890" aria-label="Call gym phone number">+1-234-567-890</a><br />
+        Email: <a href="mailto:info@fitnesspowergym.com" aria-label="Send email to gym">info@fitnesspowergym.com</a><br />
+        Address: 123 Muscle St, Fitness City, Wellness State
+      </p>
+    </section>
+
+    <section id="videos" tabindex="0" aria-labelledby="videos-heading">
+      <h2 id="videos-heading">Gym Videos</h2>
+      <div class="videos">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/dJlFmxiL11s" title="Gym Workout Video" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-wrapper">
+          <video controls preload="metadata" aria-label="Gym exercise demonstration video">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/fitness.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" tabindex="0" aria-labelledby="services-heading">
+      <h2 id="services-heading">Our Services</h2>
+      <ul class="services-list" role="list">
+        <li>Personal Training</li>
+        <li>Group Classes</li>
+        <li>Yoga &amp; Pilates</li>
+        <li>Weight Training</li>
+        <li>Cardio Programs</li>
+        <li>Nutrition Counseling</li>
+        <li>Massage Therapy</li>
+      </ul>
+    </section>
+
+    <section id="machinery" tabindex="0" aria-labelledby="machinery-heading">
+      <h2 id="machinery-heading">Gym Machinery</h2>
+      <p>We have state-of-the-art machines including treadmills, ellipticals, stationary bikes, rowing machines, free weights, cable machines, squat racks, bench press stations, and functional training zones to support all kinds of workouts.</p>
+    </section>
+
+    <section id="owner" tabindex="0" aria-labelledby="owner-heading">
+      <h2 id="owner-heading">About The Owner</h2>
+      <div class="owner">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Portrait photo of John Smith, Gym Owner" />
+        <div class="owner-description">
+          <p>John Smith, founder of Fitness Power Gym, is a certified fitness trainer with over 15 years of experience. He is passionate about helping people live healthier, fitter lives through personalized coaching and community support.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="terms" tabindex="0" aria-labelledby="terms-heading">
+      <h2 id="terms-heading">Joining Terms and Conditions</h2>
+      <div class="terms" role="region" aria-live="polite" aria-atomic="true" tabindex="0">
+        <ul>
+          <li>Membership cards must be presented upon entering the gym.</li>
+          <li>Gym timings must be strictly adhered to for smooth operations.</li>
+          <li>All members are required to follow gym rules for safety and hygiene.</li>
+          <li>Personal trainers are available with prior appointments.</li>
+          <li>Refunds are subject to management discretion and membership terms.</li>
+          <li>Any damage caused to gym property by members will be charged.</li>
+          <li>Contact <a href="tel:+1234567890" aria-label="Call gym membership inquiries phone number">+1-234-567-890</a> for membership inquiries and assistance.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

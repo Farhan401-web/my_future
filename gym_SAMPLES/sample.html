@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fitin - Your Fitness Journey Starts Here</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    color: #56ab2f;
+    text-shadow: 0 0 10px #a5d6a7;
+  }
+  header p {
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: #d6f5d6cc;
+    margin-top:0;
+    letter-spacing: 0.05em;
+  }
+
+  main {
+    flex-grow: 1;
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    padding: 0 1.5rem;
+  }
+
+  section {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 15px rgba(86,171,47,0.3);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 40px rgba(86,171,47,0.65);
+  }
+
+  section h2 {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #56ab2f;
+    padding-bottom: 0.3rem;
+  }
+  section p {
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #ceebae;
+  }
+
+  .features {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .feature-card {
+    background: #1e2e26cc;
+    border-radius: 10px;
+    flex: 1 1 250px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 0 12px #56ab2f99;
+    transition: background-color 0.3s ease;
+  }
+  .feature-card:hover {
+    background: #56ab2fdd;
+    color: #10230d;
+    box-shadow: 0 0 25px #56ab2f;
+  }
+  .feature-card svg {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+    fill: currentColor;
+  }
+  .feature-card h3 {
+    margin: 0.5rem 0 1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  .feature-card p {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #56ab2f;
+    color: #10230d;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    font-size: 1.3rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px #56ab2fcc;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 2rem;
+  }
+  .cta-button:hover {
+    background: #8fd14f;
+    box-shadow: 0 8px 30px #8fd14fcc;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem 1rem 2rem;
+    font-size: 0.9rem;
+    color: #a3d18e88;
+  }
+
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2.8rem;
+    }
+    section {
+      padding: 1.5rem;
+    }
+    .features {
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Fitin</h1>
+    <p>Your ultimate FYM fitness journey starts here — Empower your body, enrich your mind.</p>
+  </header>
+  <main>
+    <section>
+      <h2>Welcome to Fitin</h2>
+      <p>At Fitin, we believe fitness is a way of life. Whether you are here for your First Year of Making healthy habits or expanding your wellness journey, our tailored programs and community support will guide you every step of the way.</p>
+    </section>
+
+    <section>
+      <h2>Why Choose Fitin?</h2>
+      <div class="features">
+        <div class="feature-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 2C15.458 2 2 15.458 2 32s13.458 30 30 30 30-13.458 30-30S48.542 2 32 2zm0 56c-14.337 0-26-11.663-26-26S17.663 6 32 6s26 11.663 26 26-11.663 26-26 26z"/><path d="M44.707 19.293a1 1 0 0 0-1.414 0L27 35.586l-7.293-7.293a1 1 0 0 0-1.414 1.414L25.586 37l18.121-18.121a1 1 0 0 0 0-1.414z"/></svg>
+          <h3>Personalized Plans</h3>
+          <p>Custom fitness plans that fit your lifestyle and goals perfectly.</p>
+        </div>
+        <div class="feature-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M12 12h40v40H12z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="32" cy="32" r="10" stroke="currentColor" stroke-width="4" fill="none"/><path d="M32 22v10l8 4" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <h3>Flexible Scheduling</h3>
+          <p>Work out on your own time with flexible session scheduling.</p>
+        </div>
+        <div class="feature-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M44 52h8l-4-32H16l-4 32h8"/><circle cx="32" cy="14" r="6"/></svg>
+          <h3>Expert Coaches</h3>
+          <p>Get guidance from certified trainers and wellness experts.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="text-align:center;">
+      <a href="#join" class="cta-button">Join Fitin Today</a>
+    </section>
+
+    <section id="join">
+      <h2>Get Started Now</h2>
+      <p>Ready to start your fitness journey? Join Fitin and transform your lifestyle with our exclusive programs crafted just for you. No matter your fitness level, we have something that fits.</p>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 Fitin. Empowering your fitness journey every day.
+  </footer>
+</body>
+</html>
+

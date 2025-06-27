@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ultimate Fitness Gym</title>
+
+<!-- Google Fonts: Poppins and Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* Background color animation between aqua (#00FFFF) and yellow (#FFD700) */
+  @keyframes bgShift {
+    0%, 100% { background-color: #00ffff; }
+    50% { background-color: #ffd700; }
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    animation: bgShift 25s ease-in-out infinite;
+    color: #333;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #00ffff;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 50px auto 70px auto;
+    background: rgba(255 255 255 / 0.95);
+    border-radius: 25px;
+    padding: 40px 50px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  }
+
+  header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 3.8rem;
+    text-align: center;
+    color: #ffbf00;
+    letter-spacing: 6px;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 10px #ffaa00aa;
+    user-select: none;
+  }
+
+  nav {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  nav a {
+    color: #ffbf00;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0 18px;
+    padding: 8px 18px;
+    text-decoration: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px #ffbf0044;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    user-select: none;
+  }
+  nav a:hover, nav a:focus {
+    background-color: #ffca28;
+    color: #004d4d;
+    box-shadow: 0 0 35px #ffca2833;
+    outline: none;
+    cursor: pointer;
+  }
+
+  section {
+    background: #fdf6d4;
+    border-radius: 22px;
+    margin-bottom: 55px;
+    padding: 30px 35px;
+    box-shadow: 0 8px 18px #ffbf0040;
+    transition: box-shadow 0.3s ease;
+  }
+  section:hover {
+    box-shadow: 0 14px 30px #ffc10780;
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 24px;
+    color: #ffc107;
+    letter-spacing: 2.2px;
+    text-shadow: 2px 2px 8px #ffbf0080;
+    user-select: text;
+    text-align: center;
+  }
+
+  p, ul {
+    font-size: 1.18rem;
+    line-height: 1.65;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #4a4a4a;
+    user-select: text;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  ul li {
+    background: #ffca28aa;
+    color: #4a3600;
+    margin: 14px 0;
+    padding: 15px 20px;
+    font-weight: 600;
+    font-size: 1.22rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px #ffca2833;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  ul li:hover, ul li:focus {
+    background: #ffd54fbb;
+    cursor: default;
+    outline: none;
+  }
+
+  /* Images gallery */
+  .image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 22px;
+  }
+  .image-gallery img {
+    flex: 1 1 290px;
+    max-width: 290px;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px #ffa000cc;
+    transition: transform 0.3s ease;
+    user-select: none;
+  }
+  .image-gallery img:hover {
+    transform: scale(1.07);
+    cursor: pointer;
+    box-shadow: 0 8px 25px #ffc107cc;
+  }
+
+  /* Video container */
+  .video-container {
+    max-width: 900px;
+    margin: 28px auto 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 35px #ffca2877;
+    user-select: none;
+  }
+  video {
+    width: 100%;
+    border-radius: 20px;
+    height: auto;
+  }
+
+  /* Gym timing styling */
+  .timing-list {
+    max-width: 520px;
+    margin: 20px auto 0 auto;
+    font-weight: 600;
+    font-size: 1.20rem;
+    color: #7f6a00;
+    line-height: 1.55;
+  }
+  .timing-list li {
+    background: #fff3b0;
+    margin: 10px 0;
+    padding: 14px 16px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px #ffca2877;
+  }
+
+  /* Contact Section */
+  .contact-info {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #554b00;
+    line-height: 1.7;
+    text-align: center;
+    user-select: text;
+  }
+  .contact-info a {
+    color: #ffca28;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  .contact-info a:hover, .contact-info a:focus {
+    color: #b28700;
+    outline: none;
+  }
+
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    background: #ffca28cc;
+    color: #604a00;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 1.6px;
+    border-radius: 0 0 25px 25px;
+    padding: 18px 0;
+    box-shadow: 0 -6px 18px #b2870033;
+    user-select: none;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    nav a {
+      margin: 10px 12px;
+      font-size: 1.1rem;
+    }
+    .container {
+      padding: 35px 30px 45px 30px;
+    }
+    .image-gallery img {
+      max-width: 100%;
+      flex: 1 1 100%;
+    }
+    section {
+      padding: 22px 20px;
+    }
+    header {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+  }
+  @media (max-width: 420px) {
+    nav a {
+      margin: 8px 10px;
+      font-size: 1rem;
+    }
+    header {
+      font-size: 2.6rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>Ultimate Fitness Gym</header>
+  <nav aria-label="Primary navigation">
+    <a href="#about">About Gym</a>
+    <a href="#owner">Owner</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Images & Videos</a>
+    <a href="#timing">Timing</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" tabindex="0">
+    <h2>About the Gym</h2>
+    <p>
+      Ultimate Fitness Gym is committed to your health and empowerment, offering cutting-edge equipment and tailored programs in a motivating atmosphere.
+    </p>
+  </section>
+
+  <section id="owner" tabindex="0">
+    <h2>About the Owner</h2>
+    <p>
+      John Smith, with over 15 years of fitness coaching experience, leads our gym with passion, dedication, and a belief in every individual’s potential.
+    </p>
+  </section>
+
+  <section id="services" tabindex="0">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Personal Training Programs</li>
+      <li>Group Fitness Classes</li>
+      <li>Yoga & Pilates</li>
+      <li>Nutrition and Diet Counseling</li>
+      <li>Weight Training and Cardio</li>
+      <li>High-Intensity Interval Training (HIIT)</li>
+    </ul>
+  </section>
+
+  <section id="gallery" tabindex="0">
+    <h2>Images & Videos</h2>
+    <div class="image-gallery" aria-label="Gym images">
+      <img src="https://images.unsplash.com/photo-1594737625785-f0b353d58d2b?auto=format&fit=crop&w=800&q=80" alt="Gym interior" />
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80" alt="Gym equipment" />
+      <img src="https://images.unsplash.com/photo-1554284184-8d5c3665a7c7?auto=format&fit=crop&w=800&q=80" alt="Yoga class" />
+    </div>
+    <div class="video-container" aria-label="Gym video">
+      <video controls poster="https://images.unsplash.com/photo-1594737625785-f0b353d58d2b?auto=format&fit=crop&w=800&q=80">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/fitness.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <section id="timing" tabindex="0">
+    <h2>Gym Timing</h2>
+    <ul class="timing-list" aria-label="Gym opening hours">
+      <li>Monday - Friday: 5:00 AM - 11:00 PM</li>
+      <li>Saturday: 6:00 AM - 9:00 PM</li>
+      <li>Sunday: 7:00 AM - 8:00 PM</li>
+    </ul>
+  </section>
+
+  <section id="contact" tabindex="0">
+    <h2>Contact & Joining</h2>
+    <p class="contact-info">
+      Phone: <a href="tel:+1234567890">+1 234 567 890</a><br/>
+      Email: <a href="mailto:info@ultimatefitness.com">info@ultimatefitness.com</a><br/>
+      Address: 123 Wellness Street, Fit City 54321<br/>
+      Follow us on Instagram: <a href="https://instagram.com/ultimatefitness" target="_blank" rel="noopener">@ultimatefitness</a>
+    </p>
+  </section>
+</div>
+
+<footer>
+  &copy; 2024 Ultimate Fitness Gym. All Rights Reserved.
+</footer>
+
+</body>
+</html>

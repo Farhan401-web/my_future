@@ -1,0 +1,187 @@
+    i have a website where i want a page of gym where i can get all the information about gym,timing of gym ,contact details, gym videos,services ,information about gym machinary ,about owner , for joining terms and ccondition with contact number ,it must be attractive and beautiful with beautiful hove effects and gym type background image. give me the coding
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gym Info - FitIn</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  /* Reset */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  header {
+    background: rgba(0,0,0,0.5);
+    padding: 2rem;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
+
+  main {
+    max-width: 900px;
+    margin: 3rem auto 4rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 8px 40px rgba(118, 75, 162, 0.5);
+  }
+
+  section {
+    margin-bottom: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+    text-shadow: 0 0 15px #ffd700aa;
+    border-bottom: 3px solid #ffd700;
+    padding-bottom: 0.4rem;
+  }
+
+  p, ul {
+    font-size: 1.1rem;
+    color: #e0d8ff;
+  }
+
+  ul {
+    padding-left: 1.4rem;
+    margin-top: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.8rem;
+  }
+
+  .owner-info {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    background: rgba(255,255,255,0.15);
+    padding: 1.5rem;
+    border-radius: 18px;
+    box-shadow: 0 5px 25px rgba(255, 215, 0, 0.4);
+  }
+
+  .owner- info img {
+    width : 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 20px #ffd700aa;
+  }
+
+  .owner-details {
+    max-width: 650px;
+  }
+
+  .owner-details h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: #ffd700;
+    text-shadow: 0 0 15px #ffd700aa;
+  }
+
+  .owner-details p {
+    margin-bottom: 0.6rem;
+  }
+
+  .contact-number {
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 1rem;
+    background: #ffd700;
+    color: #4b0082;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 15px #ffd700bb;
+    width: fit-content;
+    margin-top: 1rem;
+    user-select: text;
+  }
+
+  /* Responsive */
+  @media (max-width: 680px) {
+    main {
+      margin: 2rem 1rem 3rem;
+      padding: 2rem;
+    }
+    .owner-info {
+      flex-direction: column;
+      text-align: center;
+    }
+    .owner-details {
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  FITIN GYM INFO
+</header>
+
+<main>
+  <section aria-label="About Gym Information">
+    <h2>About Our Gym</h2>
+    <p>Welcome to FitIn Gym! We are dedicated to providing a supportive and empowering environment where members at every level can reach their fitness goals. Our state-of-the-art facility combines the latest fitness technology with expert coaching and a vibrant community.</p>
+  </section>
+
+  <section aria-label="Information about Gym Machinery">
+    <h2>Our Gym Machinery</h2>
+    <p>We offer a comprehensive range of gym equipment to cater to all workout needs with a focus on safety and performance:</p>
+    <ul>
+      <li>Advanced strength training machines from top brands.</li>
+      <li>Wide variety of free weights including dumbbells and barbells.</li>
+      <li>Cardio equipment such as treadmills, ellipticals, and stationary bikes with interactive displays.</li>
+      <li>Functional training zones with kettlebells, medicine balls, and resistance bands.</li>
+      <li>Stretching and mobility spaces equipped with mats and foam rollers.</li>
+    </ul>
+  </section>
+
+  <section aria-label="Gym Owner Information">
+    <h2>About the Owner</h2>
+    <div class="owner-info">
+      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?crop=faces&fit=crop&w=140&h=140" alt="Gym Owner Jordan Lee" />
+      <div class="owner-details">
+        <h3>Jordan Lee</h3>
+        <p>Jordan is a seasoned fitness professional and entrepreneur with over 15 years of experience. His passion for fitness is backed by a commitment to innovation and community, driving FitIn Gym to be a leading fitness destination.</p>
+        <p>You can reach Jordan via email or phone for all your queries and personal training guidance.</p>
+        <div class="contact-number">Contact Number: +1 234 567 8901</div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Terms and Conditions for Joining Gym">
+    <h2>Terms and Conditions for Joining</h2>
+    <p>Before joining FitIn Gym, please take a moment to review our terms:</p>
+    <ul>
+      <li>Membership fees must be paid monthly and are non-refundable.</li>
+      <li>All members must comply with gym rules and safety policies.</li>
+      <li>Consult your healthcare provider before starting any new fitness program.</li>
+      <li>Use of all equipment is at your own risk.</li>
+      <li>Membership may be terminated for violations of our policies.</li>
+    </ul>
+    <p>If you have questions, feel free to contact us at:</p>
+    <div class="contact-number">+1 234 567 8901</div>
+  </section>
+</main>
+
+</body>
+</html>

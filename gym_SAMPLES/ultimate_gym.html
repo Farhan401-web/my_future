@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ultimate Gym - All About Your Fitness</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: url('https://images.unsplash.com/photo-1594737625785-e1350f6f6c0c?auto=format&fit=crop&w=1650&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #f0f0f0;
+    line-height: 1.6;
+  }
+  .overlay {
+    background: rgba(0,0,0,0.75);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  header {
+    text-align: center;
+    padding-bottom: 40px;
+    border-bottom: 2px solid #ff3b3f;
+  }
+  header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    color: #ff3b3f;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  }
+  header p {
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #ddd;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  }
+
+  section {
+    max-width: 900px;
+    margin: 50px auto;
+    background: rgba(30, 30, 30, 0.8);
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff3b3faa;
+  }
+  section h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #ff3b3f;
+    border-bottom: 2px solid #ff3b3f;
+    padding-bottom: 8px;
+  }
+
+  /* Timings */
+  .timings ul {
+    list-style: none;
+  }
+  .timings li {
+    padding: 8px 10px;
+    font-weight: 600;
+    border-bottom: 1px solid #555;
+    color: #f5f5f5;
+  }
+
+  /* Contact */
+  .contact-info p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+  .contact-info a {
+    color: #ff3b3f;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+
+  /* Videos */
+  .videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .videos iframe {
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff3b3fbb;
+    width: 100%;
+    height: 160px;
+    transition: transform 0.3s ease;
+  }
+  .videos iframe:hover {
+    transform: scale(1.05);
+  }
+
+  /* Services */
+  .services ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .services li {
+    background: #222;
+    flex: 1 1 180px;
+    padding: 15px 10px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 0 8px #ff3b3f88;
+    cursor: default;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .services li:hover {
+    background: #ff3b3f;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 0 18px #ff3b3fff;
+  }
+
+  /* Gym Machinery */
+  .machinery p {
+    margin-bottom: 15px;
+  }
+  .machinery ul {
+    list-style: disc inside;
+    margin-left: 20px;
+  }
+
+  /* Owner Info */
+  .owner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .owner img {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    box-shadow: 0 0 15px #ff3b3fbb;
+  }
+  .owner-text {
+    flex: 1;
+  }
+  .owner-text h3 {
+    color: #ff3b3f;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+  }
+  .owner-text p {
+    font-size: 1.1rem;
+  }
+
+  /* Terms */
+  .terms p, .terms ul {
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+  .terms ul {
+    list-style: circle inside;
+    margin-left: 20px;
+  }
+
+  /* Footer / Join Contact */
+  .join-contact {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #ff3b3f;
+  }
+  .join-contact a {
+    color: #ff3b3f;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .join-contact a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive tweaks */
+  @media(max-width: 600px) {
+    .owner {
+      flex-direction: column;
+      text-align: center;
+    }
+    .owner img {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="overlay">
+    <header>
+      <h1>Ultimate Gym</h1>
+      <p>Your One-Stop Fitness Destination</p>
+    </header>
+
+    <section class="about-gym">
+      <h2>About Our Gym</h2>
+      <p>Ultimate Gym is dedicated to improving your fitness journey with state-of-the-art equipment, expert trainers, and a motivating environment designed to help you reach your goals.</p>
+    </section>
+
+    <section class="timings">
+      <h2>Gym Timings</h2>
+      <ul>
+        <li>Monday - Friday: 5:00 AM - 11:00 PM</li>
+        <li>Saturday: 6:00 AM - 10:00 PM</li>
+        <li>Sunday: 7:00 AM - 8:00 PM</li>
+      </ul>
+    </section>
+
+    <section class="contact-info">
+      <h2>Contact Details</h2>
+      <p>Email: <a href="mailto:contact@ultimategym.com">contact@ultimategym.com</a></p>
+      <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+      <p>Address: 123 Fitness Blvd, Muscle City, Fitland</p>
+    </section>
+
+    <section class="videos">
+      <h2>Gym Videos</h2>
+      <iframe src="https://www.youtube.com/embed/UItWltVZZmE" title="Gym Workout Video 1" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/dK2pbAUu1sA" title="Gym Workout Video 2" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/IODxDxX7oi4" title="Gym Workout Video 3" allowfullscreen></iframe>
+    </section>
+
+    <section class="services">
+      <h2>Our Services</h2>
+      <ul>
+        <li>Personal Training</li>
+        <li>Group Classes</li>
+        <li>Nutrition Counseling</li>
+        <li>Weight Management</li>
+        <li>Cardio Programs</li>
+        <li>Strength Training</li>
+      </ul>
+    </section>
+
+    <section class="machinery">
+      <h2>Gym Machinery</h2>
+      <p>Our gym is equipped with the latest machinery to cater to all fitness levels:</p>
+      <ul>
+        <li>Treadmills</li>
+        <li>Elliptical Trainers</li>
+        <li>Stationary Bikes</li>
+        <li>Rowing Machines</li>
+        <li>Multifunctional Weight Machines</li>
+        <li>Free Weights</li>
+        <li>Cable Crossover Machines</li>
+      </ul>
+    </section>
+
+    <section class="owner">
+      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=150&q=80" alt="Gym Owner" />
+      <div class="owner-text">
+        <h3>About the Owner</h3>
+        <p>John Strong is a certified fitness expert and passionate gym owner with over 15 years of experience in bodybuilding and personal training. His vision is to empower everyone to live healthier and stronger lives.</p>
+      </div>
+    </section>
+
+    <section class="terms">
+      <h2>Joining Terms & Conditions</h2>
+      <p>Please read the following terms carefully before joining:</p>
+      <ul>
+        <li>All members must sign a waiver form before accessing the gym facilities.</li>
+        <li>Membership fees are non-refundable and must be paid monthly or annually in advance.</li>
+        <li>Proper gym attire and clean shoes are required at all times.</li>
+        <li>Follow gym staff instructions and safety protocols at all times.</li>
+        <li>Respect others and keep noise levels to a minimum.</li>
+      </ul>
+      <p>For any questions or to join, contact us at:</p>
+      <p><strong>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    </section>
+
+    <div class="join-contact">
+      <p>Ready to transform your life? Call us now: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    </div>
+  </div>
+</body>
+</html>
+

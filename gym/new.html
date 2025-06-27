@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offer Button</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            height: 200vh; /* Added to demonstrate scrolling */
+        }
+        
+        .offer-btn-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .offer-btn {
+            background: linear-gradient(45deg, #FF512F, #DD2476);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(221, 36, 118, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(221, 36, 118, 0.6);
+        }
+        
+        .offer-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .offer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .offer-btn:hover::before {
+            left: 100%;
+        }
+        
+        .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #FFD700;
+            color: #333;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .offer-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .offer-title {
+            color: #DD2476;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .offer-description {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .discount-box {
+            background: #FFF5F7;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .discount-amount {
+            font-size: 28px;
+           
+            color: #DD2476;
+            }
+        
+        .coupon-code {
+            background: #DD2476;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .claim-btn {
+            background: linear-gradient(45deg, #FF512F, #DD2476);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+           
+        }
+        
+      
+    </style>
+</head>
+<body>
+    <!-- Special Offer Button -->
+    <div class="offer-btn-container">
+        <button class="offer-btn" id="offerButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325l-2.61-3.045A.5.5 0 0 0 12.27 2H3.73a.5.5 0 0 0-.39.188L.83 5.044a.5.5 0 0 0-.12.325v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+            Special Offer
+            <div class="badge">!</div>
+        </button>
+    </div>
+    
+    <!-- Offer Modal -->
+    <div class="offer-modal" id="offerModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <h2 class="offer-title">🎉 Exclusive Limited-Time Offer! 🎉</h2>
+            <p class="offer-description">
+                As a valued visitor, we're offering an exclusive discount on our premium services. 
+                This offer is only available for a limited time, so don't miss out!
+            </p>
+            <div class="discount-box">
+                <div class="discount-amount">50% OFF</div>
+                <p>on all annual plans</p>
+                <div class="coupon-code">SPECIAL50</div>
+            </div>
+            <button class="claim-btn">Claim Your Discount Now</button>
+        </div>
+    </div>
+    
+    <script>
+        // Show modal when offer button is clicked
+        offerButton.addEventListener('click', function() {
+            offerModal.style.display = 'flex';
+        });
+        // Hide modal when close button is clicked
+        closeBtn.addEventListener('click', function() {
+            offerModal.style.display = 'none';
+        });
+        
+    </script>
+</body>
+</html>

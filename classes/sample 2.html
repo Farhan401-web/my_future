@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Disha computer Classes - Advanced AI, Search, Videos & Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<style>
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff;
+    background: linear-gradient(270deg, #6d28d9, #14b8a6, #e11d48, #f97316);
+    background-size: 800% 800%;
+    animation: gradientShift 20s ease infinite;
+    overflow-x: hidden;
+  }
+
+  @keyframes gradientShift {
+    0% {background-position:0% 50%;}
+    25% {background-position:50% 100%;}
+    50% {background-position:100% 50%;}
+    75% {background-position:50% 0%;}
+    100% {background-position:0% 50%;}
+  }
+
+  /* Overlay container for content */
+  .content-container {
+    backdrop-filter: saturate(180%) blur(20px);
+    background-color: rgba(0,0,0,0.6);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: saturate(180%) blur(30px);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    z-index: 1000;
+    padding: 16px 32px;
+  }
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #fbbf24;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 10px rgba(251,191,36,0.9);
+  }
+  nav a {
+    font-weight: 600;
+    color: #f3f4f6;
+    margin-left: 32px;
+    font-size: 1rem;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: #f59e0b;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
+  nav a:hover,
+  nav a:focus-visible {
+    color: #f59e0b;
+  }
+  nav a:hover::after,
+  nav a:focus-visible::after {
+    width: 100%;
+  }
+
+  main {
+    flex-grow: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+
+  h1, h2, h3 {
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fffbeb;
+    text-shadow: 0 0 10px rgba(0,0,0,0.6);
+  }
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #f59e0b, #fbbf24, #fed7aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2 {
+    font-size: 2.25rem;
+    margin-bottom: 24px;
+  }
+  h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+  p {
+    font-size: 1.125rem;
+    color: #f3f4f6;
+    max-width: 720px;
+    margin-bottom: 32px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, #fec70a, #fbbf24);
+    border: none;
+    padding: 16px 56px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #1f2937;
+    box-shadow: 0 8px 20px #fbbf2433;
+    transition: all 0.3s ease;
+    text-shadow: none;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    box-shadow: 0 12px 25px #f59e0bcc;
+    transform: translateY(-3px);
+  }
+
+  /* Search Bar */
+  .search-container {
+    max-width: 700px;
+    margin: 0 auto 56px;
+    display: flex;
+  }
+  .search-input {
+    flex-grow: 1;
+    font-size: 1.125rem;
+    padding: 14px 24px;
+    border-radius: 40px 0 0 40px;
+    border: none;
+    outline: none;
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.2);
+    color: #1f2937;
+    font-weight: 600;
+  }
+  .search-input::placeholder {
+    color: #6b7280;
+  }
+  .search-button {
+    background: #fec70a;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 0 40px 40px 0;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #fbbf2433;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  .search-button:hover,
+  .search-button:focus-visible {
+    background: #fbbf24;
+  }
+  .search-button .material-icons {
+    font-size: 28px;
+    color: #1f2937;
+  }
+
+  /* Classes grid */
+  .classes-grid {
+    display: grid;
+    gap: 48px;
+    grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+    margin-bottom: 64px;
+  }
+  .class-card {
+    background: rgba(255,255,255,0.12);
+    border-radius: 16px;
+    box-shadow: 0 0 24px rgba(255,255,255,0.2);
+    backdrop-filter: saturate(180%) blur(12px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .class-card:hover,
+  .class-card:focus-within {
+    box-shadow: 0 0 48px #fec70acc, 0 0 24px #fbbf2433;
+    transform: translateY(-6px);
+  }
+  .class-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .class-content {
+    padding: 24px 28px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .class-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #fff7ed;
+    text-shadow: 0 0 8px #fbbf24cc;
+  }
+  .class-desc {
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #fff8d1;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .class-tags {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .class-tag {
+    background: #fbbf24cc;
+    color: #1f2937;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 12px;
+    user-select: none;
+  }
+  .class-video {
+    border-radius: 0 0 16px 16px;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+  }
+
+  /* Contact section */
+  .contact-section {
+    background: rgba(0,0,0,0.3);
+    padding: 48px 32px;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: 0 auto 96px;
+    backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: 0 0 40px #fbbf2433;
+  }
+  .contact-section h2 {
+    margin-bottom: 24px;
+  }
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+  .contact-item {
+    flex: 1 1 280px;
+  }
+  .contact-item h3 {
+    font-weight: 700;
+    color: #fffbeb;
+    margin-bottom: 12px;
+  }
+  .contact-item p, .contact-item a {
+    color: #fff7edcc;
+    font-size: 1rem;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+  .contact-item a:hover,
+  .contact-item a:focus-visible {
+    color: #fbbf24;
+  }
+
+  /* Contact form (non-functional demo) */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .contact-input, .contact-textarea {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-input {
+    height: 44px;
+  }
+  .contact-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .btn-contact {
+    align-self: flex-start;
+    background: linear-gradient(90deg, #fec70a, #fbbf24);
+    border: none;
+    padding: 14px 40px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #1f2937;
+    box-shadow: 0 8px 20px #fbbf2433;
+    transition: all 0.3s ease;
+  }
+  .btn-contact:hover,
+  .btn-contact:focus-visible {
+    box-shadow: 0 12px 25px #f59e0bcc;
+    transform: translateY(-3px);
+  }
+
+  /* Footer */
+  footer {
+    padding: 24px 16px 48px;
+    font-size: 0.9rem;
+    color: #fbbf2433;
+    text-align: center;
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 767px) {
+    nav a {
+      margin-left: 20px;
+      font-size: 0.95rem;
+    }
+    main {
+      padding: 48px 16px 72px;
+    }
+    .contact-info {
+      flex-direction: column;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition: none !important;
+      animation-duration: 0 !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="content-container">
+  <header role="banner">
+    <div class="nav-container">
+      <a href="#" class="logo" aria-label="Disha Logo">Disha</a>
+      <nav role="navigation" aria-label="Primary Navigation">
+        <a href="#" tabindex="0">Home</a>
+        <a href="#classes" tabindex="0">Classes</a>
+        <a href="#features" tabindex="0">Features</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" role="region" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">Master Disha computer Skills with Advanced AI-Powered Classes</h1>
+      <p class="hero-subtitle">Join our expertly designed Disha computer classes powered by the latest AI technology to unlock your full potential.</p>
+      <button class="btn-primary" type="button" aria-label="Enroll Now Button">Enroll Now</button>
+    </section>
+
+    <section id="features" class="features-section" role="region" aria-labelledby="features-heading">
+      <h2 id="features-heading">Why Choose Our Disha computer Classes?</h2>
+      <div class="features-grid">
+        <article class="feature-card" tabindex="0" role="article" aria-label="Interactive AI Learning Feature">
+          <span class="feature-icon" aria-hidden="true">smart_toy</span>
+          <h3 class="feature-title">Interactive AI Learning</h3>
+          <p class="feature-desc">Harness AI to get personalized feedback and real-time skill assessments tailored for your growth.</p>
+        </article>
+        <article class="feature-card" tabindex="0" role="article" aria-label="Cutting-edge Curriculum Feature">
+          <span class="feature-icon" aria-hidden="true">auto_stories</span>
+          <h3 class="feature-title">Cutting-edge Curriculum</h3>
+          <p class="feature-desc">Stay ahead with an evolving curriculum that integrates the latest technologies and industry trends.</p>
+        </article>
+        <article class="feature-card" tabindex="0" role="article" aria-label="Expert Instructors Feature">
+          <span class="feature-icon" aria-hidden="true">support_agent</span>
+          <h3 class="feature-title">Expert Instructors</h3>
+          <p class="feature-desc">Learn from industry experts who guide you personally and ensure you achieve your learning goals.</p>
+        </article>
+        <article class="feature-card" tabindex="0" role="article" aria-label="Flexible Learning Modes Feature">
+          <span class="feature-icon" aria-hidden="true">devices</span>
+          <h3 class="feature-title">Flexible Learning Modes</h3>
+          <p class="feature-desc">Attend live or on-demand classes on any device anywhere, anytime to fit your schedule.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="search" class="search-section" role="region" aria-labelledby="search-label">
+      <h2 id="search-label" style="text-align:center; margin-bottom: 24px;">Search Disha computer Classes</h2>
+      <div class="search-container">
+        <input 
+          type="search" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Search classes by name or tags..." 
+          aria-label="Search Disha computer classes"
+          autocomplete="off"
+        />
+        <button class="search-button" aria-label="Search button"><span class="material-icons">search</span></button>
+      </div>
+    </section>
+
+    <section id="classes" class="classes-section" role="region" aria-labelledby="classes-heading">
+      <h2 id="classes-heading">Our Classes</h2>
+      <div class="classes-grid" id="classesGrid">
+
+        <article class="class-card" tabindex="0" role="listitem" data-title="Artificial Intelligence Fundamentals" data-tags="AI Machine Learning Python">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6c3e2085-e72d-45e3-8a89-5ff2ed62c9d1.png" alt="Futuristic Disha computer circuit board with AI concept visuals" class="class-img" loading="lazy" />
+          <div class="class-content">
+            <h3 class="class-title">Artificial Intelligence Fundamentals</h3>
+            <p class="class-desc">Explore AI basics, machine learning, and neural networks with hands-on projects to build real-world applications.</p>
+            <div class="class-tags">
+              <span class="class-tag">AI</span>
+              <span class="class-tag">Machine Learning</span>
+              <span class="class-tag">Python</span>
+            </div>
+            <iframe 
+              class="class-video" 
+              src="https://www.youtube-nocookie.com/embed/aircAruvnKk" 
+              title="AI Fundamentals Video" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen 
+              loading="lazy"
+            ></iframe>
+          </div>
+        </article>
+
+        <article class="class-card" tabindex="0" role="listitem" data-title="Full-Stack Web Development" data-tags="JavaScript React Node.js">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d24c19fb-dbf2-43b8-a240-d576a74e1cb0.png" alt="Modern laptop displaying colorful code editors and web frameworks" class="class-img" loading="lazy" />
+          <div class="class-content">
+            <h3 class="class-title">Full-Stack Web Development</h3>
+            <p class="class-desc">Master front-end and back-end development technologies including React, Node.js, and databases.</p>
+            <div class="class-tags">
+              <span class="class-tag">JavaScript</span>
+              <span class="class-tag">React</span>
+              <span class="class-tag">Node.js</span>
+            </div>
+            <iframe 
+              class="class-video" 
+              src="https://www.youtube-nocookie.com/embed/QFaFIcGhPoM" 
+              title="Full-Stack Web Dev Tutorial" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </article>
+
+        <article class="class-card" tabindex="0" role="listitem" data-title="Cybersecurity Essentials" data-tags="Security Networking Ethical Hacking">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4b37f62a-861e-4d32-9a0d-bd73d9f2c887.png" alt="Secure digital lock and cyber defense interface on screen" class="class-img" loading="lazy" />
+          <div class="class-content">
+            <h3 class="class-title">Cybersecurity Essentials</h3>
+            <p class="class-desc">Learn to protect systems and data with best practices for network security, ethical hacking, and cryptography.</p>
+            <div class="class-tags">
+              <span class="class-tag">Security</span>
+              <span class="class-tag">Networking</span>
+              <span class="class-tag">Ethical Hacking</span>
+            </div>
+            <iframe 
+              class="class-video" 
+              src="https://www.youtube-nocookie.com/embed/1qAIv99bq_s" 
+              title="Cybersecurity Introduction" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </article>
+
+        <article class="class-card" tabindex="0" role="listitem" data-title="Data Science and Analytics" data-tags="Data Python Statistics">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/33afb5b2-4416-4c35-a5bb-d57c2a74322a.png" alt="Dashboard showing colorful graphs and data visualizations" class="class-img" loading="lazy" />
+          <div class="class-content">
+            <h3 class="class-title">Data Science and Analytics</h3>
+            <p class="class-desc">Analyze and visualize data using Python, R, and machine learning techniques for informed decision-making.</p>
+            <div class="class-tags">
+              <span class="class-tag">Data</span>
+              <span class="class-tag">Python</span>
+              <span class="class-tag">Statistics</span>
+            </div>
+            <iframe 
+              class="class-video" 
+              src="https://www.youtube-nocookie.com/embed/r-uOLxNrNk8" 
+              title="Data Science Tutorial" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section" role="region" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact Us</h2>
+      <div class="contact-info">
+        <div class="contact-item" role="contentinfo" aria-label="Phone Number">
+          <h3>Phone</h3>
+          <p><a href="tel:+1234567890">+1 234 567 890</a></p>
+        </div>
+        <div class="contact-item" role="contentinfo" aria-label="Email Address">
+          <h3>Email</h3>
+          <p><a href="mailto:info@Disha.com">info@Disha.com</a></p>
+        </div>
+        <div class="contact-item" role="contentinfo" aria-label="Address">
+          <h3>Address</h3>
+          <p>123 Tech Street, Silicon Valley, CA</p>
+        </div>
+      </div>
+      <form class="contact-form" aria-label="Contact form">
+        <input type="text" class="contact-input" placeholder="Your Name" aria-label="Your Name" required/>
+        <input type="email" class="contact-input" placeholder="Your Email" aria-label="Your Email" required/>
+        <textarea class="contact-textarea" placeholder="Your Message" aria-label="Your Message" required></textarea>
+        <button class="btn-contact" type="submit" aria-label="Send Contact Message">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Disha. All rights reserved.
+  </footer>
+</div>
+
+<script>
+  // Advanced search bar filtering class cards in real-time
+  const searchInput = document.getElementById('searchInput');
+  const classesGrid = document.getElementById('classesGrid');
+  const classCards = Array.from(classesGrid.getElementsByClassName('class-card'));
+
+  function normalize(str) {
+    return str.toLowerCase();
+  }
+
+  searchInput.addEventListener('input', () => {
+    const query = normalize(searchInput.value.trim());
+    if (!query) {
+      // Show all if query is empty
+      classCards.forEach(card => card.style.display = '');
+      return;
+    }
+
+    classCards.forEach(card => {
+      const title = normalize(card.getAttribute('data-title') || '');
+      const tags = normalize(card.getAttribute('data-tags') || '');
+      const match = title.includes(query) || tags.includes(query);
+      card.style.display = match ? '' : 'none';
+    });
+  });
+  
+  // Optional: prevent default form submit reload for contact form demo
+  const contactForm = document.querySelector('.contact-form');
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Thank you for your message! We will get back to you shortly.');
+    contactForm.reset();
+  });
+</script>
+</body>
+</html>
+

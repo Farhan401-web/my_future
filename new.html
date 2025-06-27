@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Offers Button</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #fd79a8;
+            --text-color: #2d3436;
+            --light-color: #f5f6fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            /* display: flex; */
+           
+            /* min-height: 100vh; */
+            margin: 0;
+            /* left: 380px; */
+        }
+        
+        .offer-container {
+            position: relative;
+            width: 100%;
+            max-width: 100px;
+             left: 1300px;
+        }
+        
+        .offer-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .offer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(108, 92, 231, 0.4);
+        }
+        
+        .offer-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .offer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .offer-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(253, 121, 168, 0.7);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(253, 121, 168, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(253, 121, 168, 0);
+            }
+        }
+        
+        .offer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .offer-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .offer-content {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+            position: relative;
+            
+ /* position: relative;
+  left: 300px; */
+        }
+        
+        .offer-modal.active .offer-content {
+            transform: translateY(0);
+        }
+        
+        .offer-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .offer-close:hover {
+            color: var(--accent-color);
+        }
+        
+        .offer-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .offer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .offer-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background-color: var(--light-color);
+            transition: all 0.3s ease;
+        }
+        
+        .offer-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .offer-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .offer-details h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .offer-details p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #636e72;
+        }
+        
+        .offer-code {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .offer-add {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .add-offer-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .add-offer-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .offer-form {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .form-actions button {
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .cancel-btn {
+            background-color: #ddd;
+            color: var(--text-color);
+            border: none;
+        }
+        
+        .save-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="offer-container">
+        <button class="offer-btn" id="offerBtn">
+            Special Offers
+            <i class="fas fa-tag"></i>
+            <span class="offer-badge" id="offerBadge">3</span>
+        </button>
+    </div>
+    
+    <div class="offer-modal" id="offerModal">
+        <div class="offer-content">
+            <span class="offer-close" id="offerClose">&times;</span>
+            <h2 class="offer-title">Current Offers</h2>
+            
+            <ul class="offer-list" id="offerList">
+                <!-- Offers will be added here dynamically -->
+            </ul>
+<!--             
+            <div class="offer-add">
+                <button class="add-offer-btn" id="addOfferBtn">Add New Offer</button>
+                
+                <div class="offer-form" id="offerForm">
+                     <div class="form-group">
+                        <label for="offerTitle">Offer Title</label>
+                        <input type="text" id="offerTitle" placeholder="E.g., Summer Sale">
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="offerDesc">Description</label>
+                        <textarea id="offerDesc" rows="3" placeholder="Describe the offer details"></textarea>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="offerCode">Discount Code (optional)</label>
+                        <input type="text" id="offerCode" placeholder="E.g., SUMMER20">
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="offerIcon">Icon</label>
+                        <select id="offerIcon" class="w-full p-2 border rounded">
+                            <option value="fa-tag">Tag</option>
+                            <option value="fa-percent">Percent</option>
+                            <option value="fa-gift">Gift</option>
+                            <option value="fa-shopping-bag">Shopping Bag</option>
+                            <option value="fa-star">Star</option>
+                        </select>
+                    </div> -->
+                    <!-- <div class="form-actions">
+                        <button class="cancel-btn" id="cancelBtn">Cancel</button>
+                        <button class="save-btn" id="saveBtn">Save Offer</button>
+                    </div> -->
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Sample offers data
+        let offers = [
+            {
+                title: "Summer Sale",
+                description: "Get 20% off on all summer collections",
+                code: "SUMMER20",
+                icon: "fa-sun"
+            },
+            {
+                title: "New Customer Discount",
+                description: "First-time customers get 15% off their first purchase",
+                code: "WELCOME15",
+                icon: "fa-user-plus"
+            },
+            {
+                title: "Free Shipping",
+                description: "Free shipping on orders over $50",
+                code: "",
+                icon: "fa-truck"
+            }
+        ];
+        
+        // DOM elements
+        const offerBtn = document.getElementById('offerBtn');
+        const offerBadge = document.getElementById('offerBadge');
+        const offerModal = document.getElementById('offerModal');
+        const offerClose = document.getElementById('offerClose');
+        const offerList = document.getElementById('offerList');
+        const addOfferBtn = document.getElementById('addOfferBtn');
+        const offerForm = document.getElementById('offerForm');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        
+        // Update badge count
+        function updateBadge() {
+            offerBadge.textContent = offers.length;
+        }
+        
+        // Render offers list
+        function renderOffers() {
+            offerList.innerHTML = '';
+            
+            offers.forEach(offer => {
+                const offerItem = document.createElement('li');
+                offerItem.className = 'offer-item';
+                
+                offerItem.innerHTML = `
+                    <div class="offer-icon">
+                        <i class="fas ${offer.icon}"></i>
+                    </div>
+                    <div class="offer-details">
+                        <h3>${offer.title}</h3>
+                        <p>${offer.description}</p>
+                        ${offer.code ? `<span class="offer-code">CODE: ${offer.code}</span>` : ''}
+                    </div>
+                `;
+                
+                offerList.appendChild(offerItem);
+            });
+            
+            updateBadge();
+        }
+        
+        // Show modal
+        offerBtn.addEventListener('click', () => {
+            offerModal.classList.add('active');
+            renderOffers();
+        });
+        
+        // Hide modal
+        offerClose.addEventListener('click', () => {
+            offerModal.classList.remove('active');
+        });
+        
+        // Show form
+        addOfferBtn.addEventListener('click', () => {
+            offerForm.style.display = 'block';
+            addOfferBtn.style.display = 'none';
+        });
+        
+        // Hide form
+        cancelBtn.addEventListener('click', () => {
+            offerForm.style.display = 'none';
+            addOfferBtn.style.display = 'block';
+            // Clear form
+            document.getElementById('offerTitle').value = '';
+            document.getElementById('offerDesc').value = '';
+            document.getElementById('offerCode').value = '';
+        });
+        
+        // Save new offer
+        saveBtn.addEventListener('click', () => {
+            const title = document.getElementById('offerTitle').value.trim();
+            const description = document.getElementById('offerDesc').value.trim();
+            const code = document.getElementById('offerCode').value.trim();
+            const icon = document.getElementById('offerIcon').value;
+            
+            if (!title || !description) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            const newOffer = {
+                title,
+                description,
+                code,
+                icon
+            };
+            
+            offers.push(newOffer);
+            renderOffers();
+            
+            // Hide form and clear fields
+            offerForm.style.display = 'none';
+            addOfferBtn.style.display = 'block';
+            document.getElementById('offerTitle').value = '';
+            document.getElementById('offerDesc').value = '';
+            document.getElementById('offerCode').value = '';
+        });
+        
+        // Initialize
+        updateBadge();
+    </script>
+</body>
+</html>

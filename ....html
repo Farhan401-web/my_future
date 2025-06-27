@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Future - Product Card Settings with Three Dots</title>
+<style>
+  :root {
+    --primary-color: #5c6ac4;
+    --secondary-color: #f76c6c;
+    --bg-color: #f0f4ff;
+    --text-color: #2e2e3a;
+    --border-radius: 10px;
+    --shadow: 0 8px 20px rgba(92,106,196,0.15);
+  }
+  body {
+    background: var(--bg-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    padding: 2rem;
+  }
+  .product-card {
+    position: relative;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 320px;
+    padding: 1rem 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-name {
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+  }
+  .product-desc {
+    flex-grow: 1;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  .product-price {
+    font-weight: 900;
+    color: var(--secondary-color);
+    font-size: 1.22rem;
+    margin-bottom: 1rem;
+  }
+  /* Three dots button */
+  .settings-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .settings-btn:hover,
+  .settings-btn:focus {
+    background-color: rgba(92,106,196,0.1);
+    outline: none;
+  }
+  .settings-btn .dot {
+    width: 5px;
+    height: 5px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 8px 0 var(--primary-color), 16px 0 var(--primary-color);
+  }
+
+  /* Settings menu */
+  .settings-menu {
+    position: absolute;
+    top: 40px;
+    right: 12px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    min-width: 140px;
+    font-weight: 600;
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+  }
+  .settings-menu.open {
+    display: flex;
+  }
+  .settings-menu button {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    cursor: pointer;
+    color: var(--primary-color);
+    width: 100%;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+  }
+  .settings-menu button:hover,
+  .settings-menu button:focus {
+    background-color: var(--secondary-color);
+    color: white;
+    outline: none;
+  }
+</style>
+</head>
+<body>
+  <h2>Product Card with Settings (Three Dots) Menu - Sample</h2>
+  <div class="product-card" tabindex="0">
+    <h3 class="product-name">Futuristic Smartwatch</h3>
+    <p class="product-desc">Sleek design meets advanced fitness tracking with futuristic AI-powered health analytics.</p>
+    <div class="product-price">$199.99</div>
+
+    <!-- Settings Three Dots Button -->
+    <button 
+      class="settings-btn" 
+      aria-haspopup="true" 
+      aria-expanded="false" 
+      aria-label="Product settings"
+      title="Product settings"
+      type="button"
+    >
+      <span class="dot"></span>
+    </button>
+
+    <!-- Hidden Settings Menu -->
+    <div class="settings-menu" role="menu">
+      <button role="menuitem" type="button" id="edit-btn">Edit Product</button>
+      <button role="menuitem" type="button" id="delete-btn">Delete Product</button>
+      <button role="menuitem" type="button" id="view-details-btn">View Details</button>
+    </div>
+  </div>
+
+<script>
+  // Immediately Invoked Function Expression (IIFE) to handle the menu toggling
+  
+  (function(){
+    const productCard = document.querySelector('.product-card');
+    const settingsBtn = productCard.querySelector('.settings-btn');
+    const settingsMenu = productCard.querySelector('.settings-menu');
+    const editBtn = document.getElementById('edit-btn');
+    const deleteBtn = document.getElementById('delete-btn');
+    const viewDetailsBtn = document.getElementById('view-details-btn');
+
+    // Toggle menu open/close
+    function toggleMenu() {
+      const isOpen = settingsMenu.classList.contains('open');
+      if(isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+    function openMenu() {
+      settingsMenu.classList.add('open');
+      settingsBtn.setAttribute('aria-expanded', 'true');
+      // Focus first item for accessibility
+      editBtn.focus();
+    }
+    function closeMenu() {
+      settingsMenu.classList.remove('open');
+      settingsBtn.setAttribute('aria-expanded', 'false');
+      settingsBtn.focus();
+    }
+
+    // Click on three dots button toggles menu
+    settingsBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close menu if click outside
+    document.addEventListener('click', e => {
+      if(!productCard.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Keyboard navigation and accessibility for menu
+    settingsMenu.addEventListener('keydown', e => {
+      const focusableItems = Array.from(settingsMenu.querySelectorAll('button[role="menuitem"]'));
+      const currentIndex = focusableItems.indexOf(document.activeElement);
+      if(e.key === 'ArrowDown') {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % focusableItems.length;
+        focusableItems[nextIndex].focus();
+      } else if(e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prevIndex = (currentIndex - 1 + focusableItems.length) % focusableItems.length;
+        focusableItems[prevIndex].focus();
+      } else if(e.key === 'Escape') {
+        e.preventDefault();
+        closeMenu();
+      } else if(e.key === 'Tab') {
+        // trap focus inside menu
+        if(e.shiftKey && currentIndex === 0) {
+          e.preventDefault();
+          focusableItems[focusableItems.length - 1].focus();
+        } else if(!e.shiftKey && currentIndex === focusableItems.length - 1) {
+          e.preventDefault();
+          focusableItems[0].focus();
+        }
+      }
+    });
+
+    // Sample actions for menu buttons
+    editBtn.addEventListener('click', () => {
+      alert('Edit Product clicked! This would open product editing interface.');
+      closeMenu();
+    });
+    deleteBtn.addEventListener('click', () => {
+      if(confirm('Are you sure you want to delete this product?')) {
+        alert('Product deleted!');
+        // Actual delete logic would go here in a full app
+      }
+      closeMenu();
+    });
+    viewDetailsBtn.addEventListener('click', () => {
+      alert('View Details clicked! Showing more product info.');
+      closeMenu();
+    });
+  })();
+</script>
+</body>
+</html>
+

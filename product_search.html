@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Product Search</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+   
+  }
+ 
+ 
+  input[type="search"] {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+   
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s ease;
+  }
+  input[type="search"]:focus {
+    box-shadow: inset 2px 2px 8px #fff, 0 0 8px #ffd700;
+  }
+  ul.product-list {
+    list-style: none;
+    padding: 0;
+  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  ul.product-list li {
+    background: rgba(255,255,255,0.15);
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: default;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: background 0.3s ease;
+  }
+  ul.product-list li:hover {
+    background: #ffd700;
+    color: #4b2e00;
+  }
+  .no-results {
+    margin-top: 30px;
+    text-align: center;
+    font-style: italic;
+    color: #ffcc00;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+   <h1>product search</h1>
+    <input type="search" id="searchInput" placeholder="Search products..." aria-label="Search products" />
+    <ul id="productList" class="product-list">
+     <a href="f:\farhann\classmate.html"><li>Classmate notebook</li></a>
+     <a href="f:\farhann\sundaram.html"><li>Sundaram notebook</li></a>
+    <a href="f:\farhann\yuva_webpage.html">  <li>Youva notebook</li></a>
+    <a href="f:\farhann\TEA.html"> <li>Future Tea</li></a>
+    </ul>
+    <div id="noResults" class="no-results" style="display:none;">No products found.</div>
+  </div>
+
+  <script>
+    (function(){
+      const searchInput = document.getElementById('searchInput');
+      const productList = document.getElementById('productList');
+      const noResults = document.getElementById('noResults');
+      const products = Array.from(productList.getElementsByTagName('li'));
+
+      searchInput.addEventListener('input', function() {
+        const query = this.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        products.forEach(product => {
+          const text = product.textContent.toLowerCase();
+          if(text.includes(query)) {
+            product.style.display = '';
+            visibleCount++;
+          } else {
+            product.style.display = 'none';
+          }
+        });
+
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      });
+    })();
+  </script>
+</body>
+</html>
+

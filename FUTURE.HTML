@@ -1,0 +1,341 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Future - Buy Platform</title>
+  <style>
+    :root {
+      --primary-color: #5c6ac4;
+      --secondary-color: #f76c6c;
+      --accent-color: #36d1dc;
+      --bg-color: #f0f4ff;
+      --text-color: #2e2e3a;
+      --border-radius: 10px;
+      --max-width: 1200px;
+      --shadow: 0 8px 20px rgba(92,106,196,0.15);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      width: 100%;
+      color: #fff;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      font-family: 'Orbitron';
+      cursor: default;
+    }
+    nav button {
+      background: transparent;
+      border: none;
+      color: white;
+      margin-left: 1.25rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+    nav button:hover,
+    nav button.active {
+      background: var(--secondary-color);
+      color: white;
+      box-shadow: 0 0 12px var(--secondary-color);
+    }
+    main {
+      max-width: var(--max-width);
+      /* margin: 2rem auto; */
+      /* padding: 0 1rem; */
+      user-select: none;
+    }
+    /* Buy Section */
+  
+    #search-bar {
+      display: flex;
+      justify-content: center;
+    }
+    #search-bar input {
+      width: 100%;
+      max-width: 480px;
+      font-size: 1.15rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--border-radius);
+      border: 2px solid var(--primary-color);
+      font-weight: 600;
+      transition: border-color 0.3s ease;
+    }
+    #search-bar input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 10px var(--secondary-color);
+    }
+    
+  </style>
+  <style>
+  
+    .animated-gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #5c6ac4, #36d1dc, #f76c6c, #f8b500);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      z-index: -1;
+    }
+    @keyframes gradientShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    
+    
+
+  .auto-hover-title {
+    font-size: 3rem;
+    color: #fff;
+    animation: hoverEffect 2s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+  }
+
+  @keyframes hoverEffect {
+    0% {
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-shadow: none;
+      transform: scale(1);
+    }
+    100% {
+      color: #00ffe5;
+      letter-spacing: 6px;
+      text-shadow: 0 0 10px #00ffe5, 0 0 20px #00ffe5;
+      transform: scale(1.05);
+    }
+  }
+  
+    
+    
+    
+    
+
+      h1 {
+      
+      
+    
+      
+        position: relative;
+        cursor: pointer;
+        
+      }
+
+      h1::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #00f5d4, #9b5de5, #f15bb5);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s ease-in-out;
+      
+      }
+
+
+      h1:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    h2{
+        color: rgb(246, 248, 243);
+        text-align: center;
+        font-family: Copperplate Gothic;
+      }
+      h1{
+  color: rgb(235, 238, 231);
+        text-align: center;
+        height: 500;
+        font-family: Forte;
+      }
+      h5{
+        color: rgb(236, 238, 233);
+        text-align: center;
+        font-family: Verdana;
+      }
+
+
+
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    /* body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    
+    } */
+  
+  
+    input[type="search"] {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+    
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+      transition: box-shadow 0.3s ease;
+    }
+    input[type="search"]:focus {
+      box-shadow: inset 2px 2px 8px #fff, 0 0 8px #ffd700;
+    }
+    ul.product-list {
+      list-style: none;
+      padding: 0;
+    
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    ul.product-list li {
+      background: rgba(255,255,255,0.15);
+      padding: 16px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: default;
+      user-select: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.3s ease;
+    }
+    ul.product-list li:hover {
+      background: #ffd700;
+      color: #4b2e00;
+    }
+    .no-results {
+      margin-top: 30px;
+      text-align: center;
+      font-style: italic;
+      color: #ffcc00;
+    }
+
+
+    ul a{
+      color: white;
+      text-decoration: none;
+    }
+  
+    a{
+      text-decoration: none;
+    }
+
+
+    </style>
+  
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+  <marquee behavior="" direction="left"> <h5>Be a pare of MY FUTURE family " we are here to help you " . we will provide you the products at best price and it will lesser then as MRP . you can sell or buy product from 'MY FUTURE' for selling contact on +91 7588219649 . You can know any thing from 'MY FUTURE' like gyms, classes,etc, and you can join throught us, we will provide you special offers</h5></marquee>
+  <header>
+  <a href="./ME_INFO.html"> <h1 >MY FUTURE</h1></a>
+    <nav>
+      <!-- <button id="nav-buy" class="active" aria-controls="buy-section" aria-selected="true" type="button">Buy Products</button>
+      <button id="nav-sell" aria-controls="sell-section" aria-selected="false" type="button">Sell Products</button> -->
+          <!-- <button id="nav-buy" class="active" aria-controls="buy-section" aria-selected="true" type="button">Translate</button> -->
+    </nav>
+  </header>
+  <main>
+  <!--   
+    <section id="buy-section" class="active" aria-label="Buy Products Section">
+      <div id="search-bar">
+        <input type="search" id="search-input" aria-label="Search products" placeholder="Search products by name..." autocomplete="off" />
+      </div>
+      <div class="products-grid" id="products-grid" role="list" aria-live="polite" aria-atomic="true" tabindex="0">
+      
+      </div>
+    </section> -->
+    
+    <div class="container">
+    <h1 >product search</h1>
+      <input type="search" id="searchInput" placeholder="Search products..." aria-label="Search products" />
+      <ul id="productList" class="product-list">
+      <!-- <a href="./books/classmate.html"><li>Classmate notebook</li></a>
+      <a href="./books/sundaram.html"><li>Sundaram notebook</li></a>
+      <a href="./books/yuva_webpage.html">  <li>Youva notebook</li></a> -->
+      <a href="./Future_Mart.html">  <li>Future Mart</li>
+      <a href="../farhann/gym/samrath_GYM.html"> <li>Samrat Gym</li></a>
+      <a href="./gym/FIT_IN.html"> <li>Fit In</li></a>
+      <a href="./classes/disha.html"> <li>dishaComputerClasses</li></a> 
+      </ul>
+      <div id="noResults" class="no-results" style="display:none;">No products found.</div>
+    </div>
+
+  </main>
+
+          <div class="animated-gradient-bg"></div>
+          <br><br>
+    <!-- <h2>" we are here to help you "</h2>
+    <h3>we will provide you the products at best price and it will lesser then as MRP</h3>
+    <br><br> -->
+    <!-- <h1>' open a book <br>
+      open <br>
+        your mind! '</h1> -->
+
+        <script>
+      (function(){
+        const searchInput = document.getElementById('searchInput');
+        const productList = document.getElementById('productList');
+        const noResults = document.getElementById('noResults');
+        const products = Array.from(productList.getElementsByTagName('li'));
+
+        searchInput.addEventListener('input', function() {
+          const query = this.value.trim().toLowerCase();
+          let visibleCount = 0;
+
+          products.forEach(product => {
+            const text = product.textContent.toLowerCase();
+            if(text.includes(query)) {
+              product.style.display = '';
+              visibleCount++;
+            } else {
+              product.style.display = 'none';
+            }
+          });
+
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        });
+      })();
+    </script>
+  </body>
+
+  </html>
+

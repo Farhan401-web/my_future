@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personal Bio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at center, #050b19 0%, #141e39 60%, #0a1a2b 90%);
+    color: #e0e9ff;
+    overflow-x: hidden;
+  }
+
+  /* AI Animated background */
+  body::before, body::after {
+    content: "e:\farhann\future.image\WhatsApp Image 2025-05-27 at 3.07.43 PM.jpeg";
+    position: fixed;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    pointer-events: none;
+    background: linear-gradient(270deg, #00c3ff, #002855, #00abff, #004280, #00c3ff);
+    background-size: 1000% 1000%;
+    animation: aiGradient 40s ease infinite;
+    mix-blend-mode: screen;
+    filter: blur(75px);
+    z-index: -2;
+  }
+  body::after {
+    animation-delay: 20s;
+    filter: blur(115px);
+    opacity: 0.6;
+  }
+  @keyframes aiGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Main container for bio */
+  .container {
+    max-width: 480px;
+    background: rgba(2, 17, 45, 0.85);
+    margin: 10vh auto;
+    border-radius: 28px;
+    box-shadow: 0 0 40px #0077ffbb, inset 0 0 50px #004f8dcc;
+    padding: 3.2rem 2.4rem;
+    backdrop-filter: blur(18px);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .container:hover {
+    box-shadow: 0 0 60px #00a4ffff, inset 0 0 68px #005fccff;
+    transform: translateY(-8px);
+    transition: all 0.3s ease;
+  }
+
+  /* Profile Image */
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid #00b3ffcc;
+    margin: 0 auto 1.8rem;
+    background-image: url("./future.image/WhatsApp\ Image\ 2025-05-27\ at\ 3.07.43\ PM.jpeg");
+    background-size: contain;
+    background-position: top;
+    box-shadow: 0 0 28px #00b3ffff;
+    filter: drop-shadow(0 0 6px #008dccdd);
+    transition: box-shadow 0.3s ease;
+  }
+  .container:hover .avatar {
+    box-shadow: 0 0 48px #00d4ffff, 0 0 68px #00aaffff;
+    filter: drop-shadow(0 0 16px #00afffff);
+  }
+
+  /* Name & Title */
+  h3 {
+    /* font-size: 2.8rem; */
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #00dbff;
+    text-shadow: 0 0 8px #00aaffcc;
+    user-select: none;
+    margin-bottom: 0.2rem;
+  }
+  p.title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #89cfffcc;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.8rem;
+    user-select: none;
+    text-shadow: 0 0 5px #0077bacc;
+  }
+
+  /* Typing biography */
+  p.bio {
+    color: #c0eaffcc;
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.6;
+    min-height: 90px;
+    margin-bottom: 2.6rem;
+    white-space: pre-wrap;
+  }
+
+  /* Contact Info */
+  .contact-info {
+    margin-bottom: 2.4rem;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1rem;
+    color: #7ec8ffdd;
+    margin-bottom: 1.2rem;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: text;
+  }
+  .contact-icon {
+    width: 22px;
+    height: 22px;
+    fill: #00aaffdd;
+  }
+  a.contact-link {
+    color: #32b3ffcc;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a.contact-link:hover,
+  a.contact-link:focus {
+    outline: none;
+    color: #00e0ffdd;
+  }
+
+  /* Social Media Links */
+  .social-media {
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    margin-bottom: 1rem;
+  }
+  .social-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #003f6b33;
+    box-shadow: 0 0 10px #0055a3aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: #0099ffdd;
+    text-decoration: none;
+  }
+  .social-link:hover,
+  .social-link:focus {
+    background: #0077ddaa;
+    color: #0077dd;
+    box-shadow: 0 0 24px #00a9ffff;
+    outline: none;
+  }
+  .social-link svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+  }
+
+  /* Contact Me Button */
+  .btn-contact {
+    background: linear-gradient(135deg, #00aaff, #004f8d);
+    border: none;
+    border-radius: 36px;
+    padding: 0.8rem 3rem;
+    font-weight: 700;
+    font-size: 1.22rem;
+    color: #d0eeffdd;
+    cursor: pointer;
+    box-shadow: 0 5px 12px #0080ffcc;
+    transition: all 0.3s ease;
+    user-select: none;
+    margin: 0 auto;
+    display: block;
+    max-width: 180px;
+  }
+  .btn-contact:hover,
+  .btn-contact:focus {
+    background: linear-gradient(135deg, #00d7ff, #0077d9);
+    box-shadow: 0 9px 22px #00bbffff;
+    outline: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 520px) {
+    .container {
+      margin: 10vh 1rem;
+      max-width: 95vw;
+      padding: 2.5rem 1.8rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+    p.title {
+      font-size: 1rem;
+    }
+    p.bio {
+      font-size: 1rem;
+      min-height: 70px;
+      margin-bottom: 2rem;
+    }
+    .contact-item {
+      font-size: 0.95rem;
+      gap: 12px;
+    }
+    .social-link {
+      width: 32px;
+      height: 32px;
+    }
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+    }
+    .btn-contact {
+      font-size: 1rem;
+      padding: 0.7rem 2.2rem;
+      max-width: 140px;
+    }
+  }
+</style>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@500&display=swap');
+
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0bb6d4, #005fccff);
+    box-shadow: 0 9px 22px #00bbffff;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    /* font-size: 1.3rem; */
+    /* font-weight: 700; */
+     padding: 16px 40px;
+    border-radius: 50px; 
+    border: none;
+    
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .back-button:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 12px 25px rgba(102, 126, 234, 0.8);
+    transform: scale(1.05);
+  }
+
+  .back-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.5);
+  }
+
+  /* Stylish left arrow icon using CSS */
+  .back-button::before {
+    content: '';
+    display: inline-block;
+    margin-right: 18px;
+    width: 14px;
+    height: 14px;
+    border-top: 3px solid #fff;
+    border-left: 3px solid #fff;
+    transform: rotate(-45deg);
+    transition: border-color 0.3s ease;
+  }
+
+  .back-button:hover::before {
+    border-color: #dcd3f5;
+  }
+</style>
+</head>
+<body>
+  <a href="./FUTURE.HTML"><button class="back-button" onclick="goBack()" aria-label="Go back to previous page">Back</button></a>
+
+
+  <main class="container" role="main" aria-label="Personal Biography">
+    <div class="avatar" role="img" aria-label="Profile picture"></div>
+    <h3>Farhan Imtiyaz Shaikh</h3>
+    <p class="title">Developer</p>
+    <p class="bio" id="bio"></p>
+
+    <section class="contact-info" aria-label="Contact Information">
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 8l8 5 8-5v-2l-8 5-8-5v2z"/></svg>
+        <a href="farhanimtiyaz22@gmail.com" class="contact-link" aria-label="Email address">farhanimtiyaz22@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.91 15.91 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.5 11.5 0 003.6.58 1 1 0 011 1v3.35a1 1 0 01-1 1C7.5 20.9 3 16.4 3 11a1 1 0 011-1h3.35a1 1 0 011 1 11.5 11.5 0 00.27 2.79 1 1 0 01-.21 1.11l-2.2 2.2z"/></svg>
+        <a href="tel:+91 75882 19649" class="contact-link" aria-label="Phone number">+91 75882 19649</a>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" stroke="#00b4ff" stroke-width="2" fill="none"></circle><path d="M8 12l2 2 4-4" stroke="#00b4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Dehu Road , INDIA  </span>
+      </div>
+    </section>
+
+    <section class="social-media" aria-label="Social Media Links">
+      <a href="https://twitter.com/johndoe" class="social-link" target="_blank" rel="noopener" aria-label="Twitter profile">
+        <svg viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.564-2.005.974-3.127 1.2-.897-.957-2.173-1.555-3.591-1.555-2.717 0-4.92 2.202-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.724-.666 1.562-.666 2.475 0 1.708.87 3.213 2.188 4.096-.807-.026-1.566-.247-2.228-.616v.06c0 2.385 1.693 4.374 3.946 4.828-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.416-1.68 1.32-3.809 2.106-6.104 2.106-.399 0-.79-.023-1.17-.067 2.179 1.396 4.768 2.211 7.548 2.211 9.054 0 14-7.496 14-13.986 0-.21 0-.423-.015-.633.96-.689 1.8-1.56 2.46-2.548z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/johndoe" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.568c0-1.328-.02-3.038-1.852-3.038-1.853 0-2.136 1.444-2.136 2.938v5.668H9.352V9h3.415v1.561h.05c.476-.897 1.636-1.846 3.367-1.846 3.6 0 4.266 2.367 4.266 5.448v6.289zM5.337 7.433a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.452H3.556V9h3.564v11.452z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/shk_farhan22/?utm_source=qr&igsh=MWVqdWMxNXFrNWppeQ%3D%3D#" class="social-link" target="_blank" rel="noopener" aria-label="Instagram profile">
+        <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5A3.75 3.75 0 0020 16.25v-8.5A3.75 3.75 0 0016.25 4h-8.5zm8.5 1.5a1 1 0 110 2 1 1 0 010-2zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+      </a>
+    </section>
+
+   
+  </main>
+
+  <script>
+    const bioText = "Hello! I am Farhan Shaikh, an experienced full-stack developer passionate about building modern, efficient, and advance web apps. I comletated my school from st.jude heigh School. I'm the founder of 'My Future'. we also have online store namely 'Future Mart' . ";
+    const bioEl = document.getElementById('bio');
+    let idx = 0;
+
+    function typeBio() {
+      if (idx < bioText.length) {
+        bioEl.textContent += bioText.charAt(idx);
+        idx++;
+        setTimeout(typeBio, 40);
+      }
+    }
+
+    window.onload = typeBio;
+  </script>
+</body>
+</html>
